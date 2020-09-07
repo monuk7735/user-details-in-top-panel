@@ -2,7 +2,10 @@
   "name": "User Name in Top Bar",
   "description": "Puts Username in Status in Top Bar",
   "uuid": "user-details-in-top-panel@monuk7735.github.io",
+  "original-author": "monuk7735@gmail.com",
+  "url": "https://github.com/monuk7735/user-details-in-top-panel/",
   "shell-version": [
     "3.36"
-  ]
+  ],
+  "version": 1
 }

@@ -1,34 +1,40 @@
-/* extension.js
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
-/* exported init */
+const St = imports.gi.St;
+const Main = imports.ui.main;
+const Clutter = imports.gi.Clutter;
+const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
 
 class Extension {
-    constructor() {
-    }
 
-    enable() {
-    }
+  constructor() {
+    this.panelButton = new St.Bin({
+      y_align: Clutter.ActorAlign.CENTER,
+      style_class: "container",
+    });
 
-    disable() {
-    }
+    this.panelButtonText = new St.Label({
+      text: GLib.get_user_name().toString(),
+      style_class: "panelText",
+      y_align: Clutter.ActorAlign.CENTER,
+    });
+    this.panelButton.set_child(this.panelButtonText);
+  }
+
+  enable() {
+    log("enabled");
+    Main.panel.statusArea[
+      "aggregateMenu"
+    ]._power.indicators.insert_child_at_index(this.panelButton, -1);
+  }
+
+  disable() {
+    log("disabled");
+    Main.panel.statusArea["aggregateMenu"]._power.indicators.remove_child(
+      this.panelButton
+    );
+  }
 }
 
 function init() {
-    return new Extension();
+  return new Extension();
 }
