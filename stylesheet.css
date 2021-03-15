@@ -1,0 +1,18 @@
+.user-avatar{
+    height: 22px;
+    width: 22px;
+    z-index: -1;
+}
+
+.user-avatar-container{
+    height: 22px;
+    width: 22px;
+    margin: 2px;
+    overflow: hidden;
+    /* padding: 2px; */
+    z-index:0;
+    border-radius: 11px;
+    border: dotted;
+    border-width: 1px;
+    border-color: black;
+}
